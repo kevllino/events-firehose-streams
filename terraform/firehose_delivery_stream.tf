@@ -1,6 +1,18 @@
+variable "region" {
+  type = string
+}
+
+variable "car_stream_name" {
+  type = string
+}
+
+variable "user_stream_name" {
+  type = string
+}
+
 provider "aws" {
   profile = "default"
-  region = "eu-west-2"
+  region = var.region
 }
 
 resource "aws_s3_bucket" "bucket" {
@@ -35,8 +47,8 @@ resource "aws_iam_role_policy_attachment" "s3-full-access-policy-attachment" {
 
 resource "aws_kinesis_firehose_delivery_stream" "firehose_streams_to_s3" {
   for_each = {
-    cable-firehose-stream = "cables/"
-    user-firehose-stream = "users/"
+    (var.car_stream_name) = "cables/"
+    (var.user_stream_name) = "users/"
   }
 
   name = each.key
