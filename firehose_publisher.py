@@ -20,7 +20,8 @@ def generate_random_signals(signal_size):
 
     for i in range(signal_size):
         car_signals.append({"cableId": i, "carManufacturer": car_manufacturers[randint(0, len(car_manufacturers) - 1)]})
-        user_signals.append({"userId": i, "evProvider": ev_providers[randint(0, len(ev_providers) - 1)]})
+        user_signals.append(
+            {"userId": i, "name": "Enrique", "evProvider": ev_providers[randint(0, len(ev_providers) - 1)]})
 
     return car_signals, user_signals
 
