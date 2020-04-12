@@ -60,6 +60,6 @@ resource "aws_kinesis_firehose_delivery_stream" "firehose_streams_to_s3" {
     bucket_arn = aws_s3_bucket.bucket.arn
     prefix = each.value
     buffer_interval = 60
-
+    buffer_size = 128
   }
 }
