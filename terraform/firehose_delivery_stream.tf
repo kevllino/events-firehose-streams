@@ -53,6 +53,9 @@ resource "aws_kinesis_firehose_delivery_stream" "firehose_streams_to_s3" {
 
   name = each.key
   destination = "extended_s3"
+  server_side_encryption {
+    enabled = true
+  }
 
 
   extended_s3_configuration {
