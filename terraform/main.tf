@@ -3,11 +3,6 @@ provider "aws" {
   region = var.region
 }
 
-resource "aws_s3_bucket" "bucket" {
-  bucket = "firehose-delivery-stream-destination"
-  acl = "private"
-}
-
 resource "aws_iam_role" "firehose_role" {
   name = "firehose_test_role"
 
