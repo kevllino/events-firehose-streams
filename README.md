@@ -18,7 +18,7 @@ Firehose is an AWS Kinesis technology offering the following features:
 - use of a lambda function to do in-line processing of the data before it get sent to its destination. 
 
 The different events are stored along a prefix describing their nature and the default partition of Firehose, 
-i.e. `year/month/day/hour`. The infrastructure is created using Terraform.
+i.e. `year/month/day/hour`. The infrastructure is created using Terraform. Change
 
 ## How to run
 `terraform init`
