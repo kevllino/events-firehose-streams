@@ -3,6 +3,10 @@ provider "aws" {
   region = var.region
 }
 
+module "buckets" {
+  source = "./buckets"
+}
+
 resource "aws_iam_role" "firehose_role" {
   name = "firehose_test_role"
 
@@ -43,7 +47,7 @@ resource "aws_kinesis_firehose_delivery_stream" "firehose_streams_to_s3" {
 
   extended_s3_configuration {
     role_arn = aws_iam_role.firehose_role.arn
-    bucket_arn = aws_s3_bucket.bucket.arn
+    bucket_arn = module.buckets.s3_bucket_name
     prefix = each.value
     buffer_interval = 60
     buffer_size = 128
